@@ -32,8 +32,7 @@ int hourglassSum(vector<vector<int>> arr) {
     return total;
 }
 
-int main()
-{
+int main() {
     vector<vector<int>> arr(6);
 
     for (int i = 0; i < 6; i++) {
@@ -46,15 +45,12 @@ int main()
 
         for (int j = 0; j < 6; j++) {
             int arr_row_item = stoi(arr_row_temp[j]);
-
             arr[i][j] = arr_row_item;
         }
     }
 
     int result = hourglassSum(arr);
-
     cout << result << "\n";
-
     return 0;
 }
 
@@ -88,11 +84,9 @@ vector<string> split(const string &str) {
 
     while ((end = str.find(" ", start)) != string::npos) {
         tokens.push_back(str.substr(start, end - start));
-
         start = end + 1;
     }
 
     tokens.push_back(str.substr(start));
-
     return tokens;
 }
