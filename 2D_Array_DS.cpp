@@ -14,17 +14,15 @@ vector<string> split(const string &);
  */
 
 int hourglassSum(vector<vector<int>> arr) {
-    int total = 0;
+    int total = -1000000;
     for (int i = 0; i < arr.size()-2; i++) {
         for (int j = 0; j < arr.at(i).size()-2; j++) {
             int count = 0;
             for (int k = j; k < (j+3); k++) {
-                count += arr.at(i).at(k);
-                count += arr.at(i+2).at(k);
-                cout << arr.at(i).at(k) << endl;
+                count = count + arr.at(i).at(k);
+                count = count + arr.at(i+2).at(k);
             }
-            count += arr.at(i+1).at(j+1);
-            cout << arr.at(i+1).at(j+1) << endl;
+            count = count + arr.at(i+1).at(j+1);
             if(count >= total)
                 total = count;
         }
