@@ -27,27 +27,28 @@ int isPrime(int number) {
     return 1;
 }
 
-int primeCount(long n) {
-    int j = 0;
-    long prime_multiple = 1;
+int primeCount(long t) {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
+    int a[]={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97};
+    int i;
+    unsigned long long int n;
     
-    if (n == 1) {
-        return 0;
-    } else if (n == 2 || n == 3) {
-        return 1;
-    } else {
-        for (long i = 0; prime_multiple <= n; i++) {
-            if (isPrime(i)) {
-                if (prime_multiple * i > n) {
-                    break;
-                } else {
-                    prime_multiple = prime_multiple * i;
-                    j = j + 1;
-                }
+    while(t>0) {
+        cin>>n;
+        if(n<2)
+            cout<<0<<endl;
+        else {
+            unsigned long long int s=a[0];
+            for(i=1;i<25;i++) { 
+                s=s*a[i];
+                if(n<s)
+                    break; 
             }
+            cout<<i<<endl;
         }
-        return j;
+        t--;
     }
+    return i;
 }
 
 int main() {

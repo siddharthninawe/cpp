@@ -37,24 +37,15 @@ int isPrime(int number) {
 }
 
 int primeCount(long n) {
-    int j = 0;
-    long prime_multiple = 1;
-    
-    if (n == 1) return 0;
-    
-    if (n == 2 || n == 3) return 1;
-    
-    for (long i = 0; prime_multiple <= n; i++) {
-        if (isPrime(i)) {
-            if (prime_multiple * i > n) {
-                break;
-            } else {
-                prime_multiple = prime_multiple * i;
-                j = j + 1;
-            }
-        }
+    long prime[] = {2 , 3 , 5 , 7 , 11 , 13 , 17 , 19 , 23 , 29 , 31 , 37 , 41 , 43 , 47};
+    long product = 1;
+    int ans=0;
+    for(int i=0; i<15; i++) {
+        product = product*prime[i];
+        if(product <= n)
+            ans++;
     }
-    return j;
+    return ans;
 }
 
 int main()
