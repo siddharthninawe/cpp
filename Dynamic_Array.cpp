@@ -16,18 +16,21 @@ vector<string> split(const string &);
  */
 
 vector<int> dynamicArray(int n, vector<vector<int>> queries) {
-    vector<vector<int>> data(n);
-    vector<int> ans;
+    vector<vector<int>> sequence(n);
+    vector<int> answer;
     int lastAnswer = 0;
 
     for (int i = 0; i < queries.size(); i++) {
-        int idx = ((queries[i][1] ^ lastAnswer) % n);
-        data.at(idx).push_back(queries[i][2]);
-        lastAnswer = data.at(idx).at(2 % data.at(idx).size());
-        ans.push_back(lastAnswer);
+        int idx = (queries.at(i).at(1) ^ lastAnswer) % n;
+        if(queries.at(i).at(0) == 1) {
+            sequence.at(idx).push_back(queries.at(i).at(2));
+        } else {
+            lastAnswer = sequence.at(idx).at(queries.at(i).at(2) % sequence.at(idx).size());
+            answer.push_back(lastAnswer);
+        }
     }
     
-    return ans;
+    return answer;
 }
 
 int main() {
