@@ -15,7 +15,18 @@ string rtrim(const string &);
  */
 
 vector<int> matchingStrings(vector<string> strings, vector<string> queries) {
-
+    vector<int> answer(queries.size());
+    int position = 0;
+    while (position <= queries.size() - 1) {
+        int temp = 0;
+        for (int i = 0; i < strings.size(); i++)
+            if (strings.at(i) == queries.at(position))
+                temp++;
+                
+        answer[position] = temp;
+        position++;
+    }
+    return answer;
 }
 
 int main() {
