@@ -18,14 +18,23 @@ vector<string> split(const string &);
  */
 
 vector<double> movingTiles(int l, int s1, int s2, vector<int> queries) {
-    int overlap = 0;
-    int t = 1;
+    int t = 0;
+    int overlap;
+    vector<int> ans;
 
-    while(queries[0] != overlap) {
-        int d1 = s1 * t;
-        int d2 = s2 * t;
-
-    }  
+    for (int i = 0; i < queries.size(); i++) {
+        do {
+            t++;
+            int d1 = s1 * t;
+            int d2 = s2 * t;
+            int a = sqrt(2) * (abs(d2 - d1) / 2);
+            overlap = a ^ 2;             
+        } while(queries.at(i) != overlap);
+        
+        cout << t << endl;
+    }
+    vector<double> a;
+    return a;
 }
 
 int main()
