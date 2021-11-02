@@ -17,24 +17,22 @@ vector<string> split(const string &);
  *  4. INTEGER_ARRAY queries
  */
 
-vector<double> movingTiles(int l, int s1, int s2, vector<int> queries) {
-    int t = 0;
-    int overlap;
-    vector<int> ans;
-
+vector<double> movingTiles(int l, int s1, int s2, vector<long long int> queries) {
+    vector<double> answer;
+    double diagonal = l * sqrt(2);
+    double diff_velocity = abs(s2 - s1);
     for (int i = 0; i < queries.size(); i++) {
-        do {
-            t++;
-            int d1 = s1 * t;
-            int d2 = s2 * t;
-            int a = sqrt(2) * (abs(d2 - d1) / 2);
-            overlap = a ^ 2;             
-        } while(queries.at(i) != overlap);
-        
-        cout << t << endl;
+        double q1_diagonal = sqrt(2 * queries.at(i));
+        double q2_diagonal = l * sqrt(2);
+        double time = 0.00000;
+        while (q2_diagonal > q1_diagonal) {
+            q2_diagonal = diagonal - diff_velocity * time;
+            time = time + 0.00001;
+        }
+        setprecision(4);
+        answer.push_back(int(10000 * time) / 10000.0000);
     }
-    vector<double> a;
-    return a;
+    return answer;
 }
 
 int main()
@@ -55,14 +53,13 @@ int main()
 
     int queries_count = stoi(ltrim(rtrim(queries_count_temp)));
 
-    vector<int> queries(queries_count);
+    vector<long long int> queries(queries_count);
 
     for (int i = 0; i < queries_count; i++) {
         string queries_item_temp;
         getline(cin, queries_item_temp);
 
-        int queries_item = stoi(ltrim(rtrim(queries_item_temp)));
-
+        long long int queries_item = stoll(ltrim(rtrim(queries_item_temp)));
         queries[i] = queries_item;
     }
 
