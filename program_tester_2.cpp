@@ -3,9 +3,11 @@
 using namespace std;
 
 int main() {
-    double value = 4.14215;
-    cout << value << endl;
-    for(int i = 0; i <= 6; i++)
-        cout << "Setprecision(" << i << ") : " << setprecision(i) << value << endl;
+    vector<int> arr(2);
+    arr.push_back(5);
+    for (int i = 0; i < arr.size(); i++) {
+        cout << arr.at(i) << endl;
+    }
+    
     return 0;
 } 
